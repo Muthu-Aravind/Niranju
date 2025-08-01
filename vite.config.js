@@ -5,6 +5,5 @@ export default defineConfig({
   plugins: [react()],
   css: {
     modules: false, // Ensure CSS modules aren't interfering
-  },
-  base: '/Niranju/',
+  }
 });
