@@ -1,0 +1,716 @@
+.memory-garden-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Comic Neue', cursive;
+  text-align: center;
+  padding-top: 30px;
+  transition: background 1s ease;
+}
+
+.memory-garden-container.spring {
+  background: linear-gradient(to bottom, #ffcce6 0%, #b3e0ff 100%);
+}
+
+.memory-garden-container.summer {
+  background: linear-gradient(to bottom, #66ccff 0%, #ffccf2 100%);
+}
+
+.memory-garden-container.autumn {
+  background: linear-gradient(to bottom, #ff9966 0%, #ffcc99 100%);
+}
+
+.memory-garden-container.winter {
+  background: linear-gradient(to bottom, #e6f2ff 0%, #ccf2ff 100%);
+}
+
+.memory-garden-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #ff4d88;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+  font-family: 'Pacifico', cursive;
+}
+
+.memory-garden-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #ff6699;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.memory-season-toggle-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.memory-season-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff6699;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.memory-season-toggle:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
+}
+
+.memory-season-icon {
+  font-size: 1.2rem;
+}
+
+.memory-garden-bed {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.memory-flower-pot {
+  position: relative;
+  width: 80px;
+  height: 180px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.memory-flower-pot:hover {
+  transform: translateY(-5px);
+}
+
+.memory-flower-pot.cringe-pot {
+  animation: memory-cringe-pulse 2s infinite;
+}
+
+.memory-cringe-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff0000;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  z-index: 3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.memory-pot {
+  position: absolute;
+  bottom: 0;
+  width: 70px;
+  height: 50px;
+  background: #e67e22;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.memory-stem {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 6px;
+  height: 0;
+  background: #2ecc71;
+  transform: translateX(-50%);
+  transition: height 0.5s ease;
+}
+
+.memory-flower-pot.bloomed .memory-stem {
+  height: 80px;
+}
+
+.memory-flower {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.5s;
+  width: 40px;
+  height: 40px;
+}
+
+.memory-flower-pot.bloomed .memory-flower {
+  opacity: 1;
+}
+
+.memory-heart-shape {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: var(--flower-color);
+  transform: rotate(45deg);
+  animation: memory-pulse 2s infinite;
+}
+
+.memory-heart-shape:before,
+.memory-heart-shape:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--flower-color);
+  border-radius: 50%;
+}
+
+.memory-heart-shape:before {
+  top: -20px;
+  left: 0;
+}
+
+.memory-heart-shape:after {
+  top: 0;
+  left: -20px;
+}
+
+.memory-emoji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 16px;
+  z-index: 2;
+}
+
+.memory-leaf {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #2ecc71;
+  border-radius: 10px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.7s;
+}
+
+.memory-leaf.l1 {
+  bottom: 80px;
+  left: 55%;
+  transform: rotate(20deg);
+}
+
+.memory-leaf.l2 {
+  bottom: 100px;
+  left: 45%;
+  transform: rotate(-20deg);
+}
+
+.memory-flower-pot.bloomed .memory-leaf {
+  opacity: 1;
+}
+
+.memory-card {
+  margin-bottom: 40px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+  border-bottom: 4px solid;
+  max-width: 80%;
+  animation: memory-fadeInUp 0.5s ease;
+  text-align: center;
+  z-index: 5;
+}
+
+.memory-card.cringe-card {
+  animation: memory-cringe-shake 0.5s ease;
+  background: #fff0f0;
+}
+
+.memory-card h3 {
+  margin: 0 0 10px 0;
+  color: #ff4d88;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+}
+
+.memory-card p {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.memory-audio-button {
+  background: linear-gradient(135deg, #ff6b8b, #ff8e8e);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  font-family: 'Comic Neue', cursive;
+}
+
+.memory-audio-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.memory-audio-button.playing {
+  background: linear-gradient(135deg, #ff8e8e, #ff6b8b);
+}
+
+.memory-audio-icon {
+  font-size: 1.1rem;
+}
+
+.memory-card-arrow {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid;
+}
+
+.memory-floating-heart {
+  position: absolute;
+  top: -20px;
+  z-index: 1;
+  animation: memory-float-up linear forwards;
+  pointer-events: none;
+  font-size: 24px;
+  user-select: none;
+  opacity: 0.8;
+}
+
+.memory-snowflake {
+  position: absolute;
+  top: -20px;
+  z-index: 1;
+  animation: memory-falling linear infinite;
+  pointer-events: none;
+  user-select: none;
+}
+
+.memory-autumn-leaf {
+  position: absolute;
+  top: -20px;
+  z-index: 1;
+  animation: memory-falling-leaf linear infinite;
+  pointer-events: none;
+  font-size: 24px;
+  user-select: none;
+}
+
+.memory-sun {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+  background: #ffcc00;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #ffcc00;
+  z-index: 1;
+}
+
+.memory-cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.memory-cloud.c1 {
+  top: 15%;
+  left: 10%;
+  width: 100px;
+  height: 60px;
+  animation: memory-drift 30s linear infinite;
+}
+
+.memory-cloud.c2 {
+  top: 25%;
+  right: 20%;
+  width: 70px;
+  height: 40px;
+  animation: memory-drift 40s linear infinite reverse;
+}
+
+.memory-cloud.c3 {
+  top: 10%;
+  right: 5%;
+  width: 120px;
+  height: 70px;
+  animation: memory-drift 50s linear infinite;
+}
+
+.memory-moon {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  font-size: 60px;
+  z-index: 1;
+  animation: memory-gentle-glow 4s infinite alternate;
+}
+
+.memory-cringe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: memory-fadeIn 0.5s ease;
+}
+
+.memory-cringe-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 80%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+  border: 3px solid #ff0000;
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-cringe-card h3 {
+  color: #ff0000;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
+}
+
+.memory-cringe-card p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.memory-cringe-hearts {
+  margin-top: 20px;
+}
+
+.memory-cringe-hearts span {
+  display: inline-block;
+  font-size: 24px;
+  animation: memory-heart-beat 0.8s infinite alternate;
+}
+
+@keyframes memory-pulse {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+@keyframes memory-float-up {
+  to {
+    top: -100px;
+    opacity: 0;
+  }
+}
+
+@keyframes memory-falling {
+  to {
+    top: 100%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes memory-falling-leaf {
+  to {
+    top: 100%;
+    transform: rotate(360deg) translateX(50px);
+  }
+}
+
+@keyframes memory-gentle-glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes memory-drift {
+  to {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+@keyframes memory-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes memory-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes memory-heart-beat {
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes memory-cringe-pulse {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes memory-cringe-shake {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-50%) rotate(5deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(5deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .memory-garden-title {
+    font-size: 2rem;
+  }
+
+  .memory-garden-subtitle {
+    font-size: 1rem;
+  }
+
+  .memory-garden-bed {
+    gap: 25px;
+    padding: 0 30px;
+  }
+
+  .memory-flower-pot {
+    width: 60px;
+    height: 150px;
+  }
+
+  .memory-card {
+    bottom: 20px;
+    padding: 15px 20px;
+    max-width: 90%;
+  }
+
+  .memory-sun,
+  .memory-moon {
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+  }
+
+  .memory-cringe-card {
+    padding: 20px;
+  }
+
+  .memory-cringe-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .memory-cringe-card p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .memory-garden-title {
+    margin-bottom: 15px;
+  }
+
+  .memory-garden-subtitle {
+    margin-bottom: 30px;
+  }
+
+  .memory-garden-container {
+    padding: 30px 15px 15px;
+    padding-left: 10px;
+  }
+
+  .memory-garden-bed {
+    gap: 25px; /* Increased from 20px */
+    padding: 0 20px; /* More side padding */
+    margin-top: 40px; /* More top margin */
+  }
+
+  .memory-flower-pot {
+    width: 50px;
+    height: 130px;
+  }
+
+  .memory-card {
+    bottom: 30px; /* Raised from bottom */
+    padding: 15px;
+  }
+
+  .memory-audio-button {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
+
+  .memory-cringe-card {
+    padding: 15px;
+  }
+
+  .memory-season-toggle-container {
+    display: none;
+  }
+
+  .memory-love-message-container {
+    bottom: 30px;
+  }
+}
+
+.memory-love-message-container {
+  margin-top: 200px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.memory-love-button {
+  background: linear-gradient(135deg, #ff6b8b, #ff8e8e);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  font-family: 'Pacifico', cursive;
+}
+
+.memory-love-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+.memory-love-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: memory-fadeIn 0.5s ease;
+}
+
+.memory-love-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 80%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+  border: 3px solid #ff6b8b;
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-love-card h3 {
+  color: #ff4d88;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
+}
+
+.memory-love-card p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.memory-love-hearts {
+  margin-top: 20px;
+}
+
+.memory-love-hearts span {
+  display: inline-block;
+  font-size: 24px;
+  animation: memory-heart-beat 0.8s infinite alternate;
+}

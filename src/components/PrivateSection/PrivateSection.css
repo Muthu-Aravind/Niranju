@@ -1,0 +1,891 @@
+.ps-main-container {
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.ps-auth-box {
+  background: linear-gradient(135deg, #fff5f5 0%, #fff0f6 100%);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+  border: 1px solid #ffebf1;
+  position: relative;
+  overflow: hidden;
+  width: 35%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.ps-auth-box:hover {
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
+}
+
+.ps-shake {
+  animation: ps-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes ps-shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.ps-heart {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 3rem;
+  opacity: 0.1;
+  z-index: 0;
+  animation: ps-heart-beat 2s infinite;
+}
+
+@keyframes ps-heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.ps-title {
+  color: #d6336c;
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(214, 51, 108, 0.2);
+}
+
+.ps-subtitle {
+  color: #c2255c;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ps-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.ps-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ps-input {
+  padding: 1rem 1.2rem;
+  border: 2px solid #ffdeeb;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(214, 51, 108, 0.08);
+  outline: none;
+}
+
+.ps-input:focus {
+  border-color: #d6336c;
+  box-shadow: 0 0 0 4px rgba(214, 51, 108, 0.2);
+}
+
+.ps-input::placeholder {
+  color: #fcc2d7;
+}
+
+.ps-button {
+  background: linear-gradient(135deg, #f06595 0%, #d6336c 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(214, 51, 108, 0.3);
+  width: 60%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.ps-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(214, 51, 108, 0.4);
+  background: linear-gradient(135deg, #ff87b2 0%, #e63979 100%);
+}
+
+.ps-error {
+  color: #e64980;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: -1rem;
+  animation: ps-error-blink 1s infinite;
+}
+
+@keyframes ps-error-blink {
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.ps-quiz-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.ps-quiz-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.ps-quiz-question {
+  background: linear-gradient(145deg, #fffefe, #ffeff7);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 30px rgba(255, 105, 180, 0.3),
+    inset 0 0 10px rgba(255, 182, 193, 0.2);
+  transition: all 0.4s ease;
+  border: 2px solid #ffe0eb;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  background-size: 200% 200%;
+  animation: ps-quiz-glimmer 6s ease infinite;
+}
+
+.ps-quiz-question:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 12px 40px rgba(255, 105, 180, 0.4),
+    inset 0 0 15px rgba(255, 182, 193, 0.3);
+  background-position: 100% 100%;
+}
+
+@keyframes ps-quiz-glimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.ps-quiz-question::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #ff87b2, #d6336c, #ff7096);
+  border-radius: 20px 20px 0 0;
+  animation: ps-quiz-stripes 3s ease infinite;
+}
+
+@keyframes ps-quiz-stripes {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.ps-quiz-question-text {
+  color: #d6336c;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  line-height: 1.5;
+  text-shadow: 0 2px 6px rgba(214, 51, 108, 0.2);
+}
+
+.ps-quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ps-quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #c2255c;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 240, 245, 0.9),
+    rgba(255, 182, 193, 0.9)
+  );
+  transition: all 0.3s ease;
+  border: 2px solid #ffe0eb;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.1);
+}
+
+.ps-quiz-option:hover {
+  background: linear-gradient(135deg, #ffeff7, #ffd1dc);
+  transform: translateX(8px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(255, 105, 180, 0.2);
+  color: #a61e4d;
+}
+
+.ps-quiz-radio {
+  display: none;
+}
+
+.ps-quiz-custom-radio {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ff7096;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  background: #fff;
+  box-shadow: inset 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+.ps-quiz-radio:checked + .ps-quiz-custom-radio {
+  background: linear-gradient(135deg, #ff7096, #d6336c);
+  border-color: #ff7096;
+}
+
+.ps-quiz-radio:checked + .ps-quiz-custom-radio::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.ps-try-again {
+  color: #ff7096;
+  text-align: center;
+  font-weight: 600;
+  margin-top: -1.5rem;
+  font-size: 1rem;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
+  animation: ps-try-again-pulse 2s infinite;
+}
+
+@keyframes ps-try-again-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.ps-content {
+  background: linear-gradient(135deg, #fff5f5 0%, #fff0f6 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+  border: 1px solid #ffebf1;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 182, 193, 0.1) 0%,
+    transparent 70%
+  );
+  animation: ps-content-glow 8s ease infinite;
+  z-index: 0;
+}
+
+@keyframes ps-content-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ps-welcome {
+  color: #d6336c;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 3px 6px rgba(214, 51, 108, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.ps-message {
+  color: #c2255c;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ps-premium-video-card {
+  width: 100%;
+  max-width: 600px;
+  height: 240px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #ff8fa3 0%, #ff7096 50%, #ff8fa3 100%);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 20px 40px rgba(255, 105, 180, 0.3),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.ps-premium-video-card:hover {
+  transform: scale(1.04) translateY(-10px);
+  box-shadow:
+    0 30px 60px rgba(255, 105, 180, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(145deg, #ff9bb1 0%, #ff7ca2 50%, #ff9bb1 100%);
+}
+
+.ps-premium-glare {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: rotate(30deg);
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+
+.ps-premium-video-card:hover .ps-premium-glare {
+  opacity: 0.8;
+}
+
+.ps-premium-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.ps-premium-lock-icon {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.4));
+  animation: ps-premium-pulse 2s ease infinite;
+  flex-shrink: 0;
+  color: white;
+  opacity: 0.95;
+  transition: transform 0.3s ease;
+}
+
+.ps-premium-video-card:hover .ps-premium-lock-icon {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.ps-premium-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.ps-premium-title {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.ps-premium-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+.ps-premium-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.ps-premium-video-card:hover .ps-premium-shine {
+  opacity: 1;
+}
+
+.ps-premium-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 1;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+@keyframes ps-premium-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(5deg);
+  }
+}
+.ps-prank-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+.ps-prank-inner {
+  background: linear-gradient(135deg, #fff5f5, #ffeff7);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  width: 400px;
+  border: 2px solid #ffe0eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ps-prank-emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 1.5s infinite;
+}
+
+.prank-video {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  margin: 1rem 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.prank-text {
+  margin-top: 1rem;
+  color: #ff4081;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 600px) {
+  .ps-prank-inner {
+    padding: 1.5rem;
+    width: 85%;
+  }
+
+  .ps-prank-emoji {
+    font-size: 2.5rem;
+  }
+
+  .prank-video {
+    max-width: 250px;
+  }
+
+  .prank-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .ps-prank-inner {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .prank-video {
+    max-width: 200px;
+  }
+
+  .prank-text {
+    font-size: 1rem;
+  }
+}
+
+@keyframes ps-prank-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .ps-auth-box {
+    width: 50%;
+  }
+
+  .ps-password-form {
+    width: 80%;
+  }
+
+  .ps-premium-video-card {
+    height: 180px;
+    max-width: 90%;
+  }
+
+  .ps-premium-content {
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .ps-premium-lock-icon {
+    font-size: 4rem;
+  }
+
+  .ps-premium-title {
+    font-size: 2rem;
+  }
+
+  .ps-premium-subtitle {
+    font-size: 1rem;
+  }
+
+  .ps-quiz-question {
+    padding: 1.5rem;
+  }
+
+  .ps-quiz-question-text {
+    font-size: 1.2rem;
+  }
+
+  .ps-quiz-option {
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ps-auth-box,
+  .ps-success {
+    padding: 2rem 1.5rem;
+    width: 70%;
+  }
+
+  .ps-password-form {
+    width: 90%;
+  }
+
+  .ps-title {
+    font-size: 1.5rem;
+  }
+
+  .ps-input {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .ps-button {
+    padding: 0.9rem;
+    width: 70%;
+  }
+
+  .ps-premium-video-card {
+    height: 160px;
+  }
+
+  .ps-premium-lock-icon {
+    font-size: 3.5rem;
+  }
+
+  .ps-premium-title {
+    font-size: 1.8rem;
+  }
+
+  .ps-premium-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .ps-quiz-question {
+    padding: 1.2rem;
+  }
+
+  .ps-quiz-question-text {
+    font-size: 1.1rem;
+  }
+
+  .ps-quiz-option {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .ps-auth-box,
+  .ps-success {
+    padding: 1.8rem 1.2rem;
+    border-radius: 18px;
+    width: 85%;
+  }
+
+  .ps-password-form {
+    width: 100%;
+  }
+
+  .ps-title {
+    font-size: 1.4rem;
+  }
+
+  .ps-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .ps-input {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .ps-button {
+    font-size: 0.95rem;
+    width: 80%;
+  }
+
+  .ps-quiz-question-text {
+    font-size: 1rem;
+  }
+
+  .ps-quiz-option {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+}
+
+/* Add these to your existing CSS */
+.ps-wrong-question {
+  animation: ps-pulse-wrong 0.5s ease;
+  border: 2px solid #ff6b6b;
+  background: linear-gradient(145deg, #fff5f5, #ffebeb);
+}
+
+.ps-wrong-answer {
+  position: relative;
+}
+
+.ps-wrong-answer .ps-quiz-custom-radio {
+  border-color: #ff6b6b;
+  background-color: #ffebeb;
+}
+
+.ps-wrong-answer::after {
+  content: '❌';
+  position: absolute;
+  right: 15px;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+}
+
+.ps-error-box {
+  background: #fff5f5;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ffdeeb;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.1);
+}
+
+.ps-error-message {
+  color: #ff6b6b;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ps-wrong-questions {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.ps-wrong-title {
+  color: #d6336c;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.ps-wrong-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ps-wrong-item {
+  color: #c2255c;
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 8px;
+  background: #fff0f6;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.ps-wrong-icon {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+@keyframes ps-pulse-wrong {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

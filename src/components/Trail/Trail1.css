@@ -1,0 +1,313 @@
+/* Homepage.css */
+.love-letter {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #f8f0e8;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', serif;
+}
+
+/* Envelope and letter styling */
+.letter-container {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  z-index: 2;
+}
+
+.love-letter.step-1 .letter-container {
+  transform: translateY(-50px) rotateX(30deg);
+}
+
+.love-letter.step-2 .letter-container {
+  transform: translateY(-100px) rotateX(0deg);
+  height: 250px;
+}
+
+.love-letter.step-3 .letter-container {
+  transform: translateY(-150px) rotateX(0deg);
+  height: 400px;
+  width: 280px;
+}
+
+.envelope-front,
+.envelope-flap,
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e3c9c9;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.envelope-front {
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+
+.envelope-flap {
+  background: #d8b6b6;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 4;
+}
+
+.love-letter.step-1 .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-back {
+  z-index: 1;
+}
+
+/* Wax seal styling */
+.seal {
+  position: relative;
+  z-index: 5;
+}
+
+.wax-seal {
+  width: 50px;
+  height: 50px;
+  background: #c0392b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.wax-seal:hover {
+  transform: scale(1.1);
+}
+
+.monogram {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.broken-seal {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.wax-piece {
+  position: absolute;
+  background: #c0392b;
+  border-radius: 50%;
+}
+
+.wax-piece:first-child {
+  width: 30px;
+  height: 30px;
+  top: 0;
+  left: 0;
+}
+
+.wax-piece:last-child {
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  right: 0;
+}
+
+/* Letter content */
+.letter-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+  transform-origin: bottom;
+  transition: all 1s ease;
+}
+
+.paper {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background: #fff9f0;
+  bottom: 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: height 1s ease 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.love-letter.step-2 .paper {
+  height: 80%;
+}
+
+.love-letter.step-3 .paper {
+  height: 100%;
+}
+
+/* Handwriting effect */
+.handwriting {
+  padding: 30px;
+  opacity: 0;
+  animation: fadeIn 2s ease 1.5s forwards;
+  line-height: 1.8;
+  color: #333;
+}
+
+.handwriting p {
+  margin-bottom: 15px;
+  position: relative;
+  left: -20px;
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    left: 0;
+  }
+}
+
+.signature {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  text-align: right;
+  color: #c0392b;
+}
+
+/* Ink well interactive element */
+.ink-well {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.ink-drop {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #1a1a2e;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.feather-pen {
+  position: absolute;
+  width: 30px;
+  height: 80px;
+  background: #555;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) rotate(15deg);
+}
+
+.feather-pen:before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background: #f0f0f0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  top: -20px;
+  left: 0;
+}
+
+/* Petals animation */
+.petal {
+  position: absolute;
+  background: pink;
+  clip-path: ellipse(25% 40% at 50% 50%);
+  opacity: 0.8;
+  animation: falling linear forwards;
+  z-index: 1;
+}
+
+@keyframes falling {
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Instructions */
+.instruction-tap {
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  color: #7d5a5a;
+  animation: bounce 2s infinite;
+  z-index: 10;
+}
+
+.hand-icon {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .letter-container {
+    width: 250px;
+    height: 180px;
+  }
+
+  .love-letter.step-3 .letter-container {
+    height: 350px;
+    width: 230px;
+  }
+
+  .handwriting {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+}

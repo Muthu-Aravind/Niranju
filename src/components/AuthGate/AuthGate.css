@@ -1,0 +1,137 @@
+.auth-gate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b8b, #ff8e53);
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-gate-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  animation: auth-gate-fadeIn 0.6s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.auth-gate-title {
+  color: #ff4757;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(to right, #ff4757, #ff6b8b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.auth-gate-subtitle {
+  color: #57606f;
+  margin-bottom: 2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.auth-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-gate-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid #dfe4ea;
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.auth-gate-input:focus {
+  border-color: #ff6b8b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2);
+}
+
+.auth-gate-button {
+  background: linear-gradient(to right, #ff4757, #ff6b8b);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.auth-gate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 107, 139, 0.3);
+}
+
+.auth-gate-button:active {
+  transform: translateY(1px);
+}
+
+.auth-gate-error {
+  color: #ff4757;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  animation: auth-gate-shake 0.5s ease;
+}
+
+@keyframes auth-gate-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auth-gate-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-gate-card {
+    padding: 1.8rem;
+    width: 95%;
+  }
+
+  .auth-gate-button {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .auth-gate-input {
+    padding: 0.9rem 1.2rem;
+  }
+}
