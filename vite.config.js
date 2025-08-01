@@ -6,4 +6,5 @@ export default defineConfig({
   css: {
     modules: false, // Ensure CSS modules aren't interfering
   },
+  base: '/Niranju/',
 });
